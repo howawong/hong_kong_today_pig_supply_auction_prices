@@ -1,5 +1,3 @@
-import scrapy
-from scrapy.crawler import CrawlerProcess
 import scraperwiki
 from datetime import datetime
 from urlparse import urljoin
