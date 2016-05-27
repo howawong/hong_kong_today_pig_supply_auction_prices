@@ -9,17 +9,7 @@ def parse_page(url):
     html = ""
     max_retry = 10
     print url
-    for i in range(max_retry):
-        try:
-            html = scraperwiki.scrape(url)
-            break
-        except HTTPError:
-            print "error"
-            if i + 1 == max_retry:
-                raise
-            else:
-                print "retrying"
-                time.sleep(10)
+    html = scraperwiki.scrape(url, user_agent='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36')
     root = lxml.html.fromstring(html)
     table = root.xpath('//table[@class=\'shrs_s1\']')[0]
     header_texts = table.xpath('.//td[@class=\'shrs_s2\']/text()')
